@@ -1,4 +1,4 @@
-![marketloung.org_screenshot](ml_screenshot.png)
+![marketlounge.org_screenshot](ml_screenshot.png) //FIX THIS
 Market Lounge is an open source, interactive, data visualization app that helps users identify important financial metrics and trends before they invest in public companies.
 
 ## Getting Started
@@ -51,9 +51,9 @@ We can rely primarily on native image optimization that Next provides, documente
 
 Next.js has extended the [web standard fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) with new caching functionality that works automatically for deployed sites. You can read more about Next's fetch API [here](https://nextjs.org/docs/app/api-reference/functions/fetch). For a dive into all Next caching features (both client- and server-side) see [here](https://nextjs.org/docs/app/building-your-application/caching).
 
-### Automatic polyfils
+### Automatic polyfills
 
-Next automatically [polyfils](https://developer.mozilla.org/en-US/docs/Glossary/Polyfill) for browsers that need them, preventing us from configuring our own. Read more on this [here](https://nextjs.org/docs/architecture/supported-browsers#polyfills).
+Next automatically [polyfills](https://developer.mozilla.org/en-US/docs/Glossary/Polyfill) for browsers that need them, preventing us from configuring our own. Read more on this [here](https://nextjs.org/docs/architecture/supported-browsers#polyfills).
 
 ### Better code organization
 
@@ -71,7 +71,15 @@ Next.js uses React.js, which makes organizing pages and components far easier. I
 
 ### Prettier
 
-[Prettier](https://prettier.io/) makes consistent formatting for our code easy. Our configuration can be found in the `package.json`. To enable auto fomratting on-save, see these prettier [docs](https://prettier.io/docs/en/editors).
+[Prettier](https://prettier.io/) makes consistent formatting for our code easy. Our configuration can be found in the `package.json`. To enable auto formatting on-save, see these prettier [docs](https://prettier.io/docs/en/editors).
+
+### Vercel
+
+This application is hosted in production on Vercel servers.
+
+### Jest
+
+Unit testing helps us debug and refactor our highly constrained functions, although too much testing will have a diminishing return. See [this article](https://medium.com/@jakobarsement/unit-test-your-javascript-with-jest-bc553fdbeb39) on Jest testing.
 
 ### Future tech Considerations
 
