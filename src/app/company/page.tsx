@@ -16,24 +16,26 @@ const CompanyPage = () => {
       </div>
       <div className="w-3/5">
         <CompanyHeader />
-        {/* <SharePriceChart /> */}
-        {/* <CompanyTable /> */}
-        {/* <IntensityBar
+        <SharePriceChart />
+        <CompanyTable />
+        <IntensityBar
           key="revenueGrowth"
           company={'AAPL'}
           indicator="revenueGrowth"
           title="Q/Q Revenue Growth"
           chartData={[]}
-        /> */}
-        {/* <IntensityBar
+        />
+        <IntensityBar
           key="ebitgrowth"
           company={'AAPL'}
           indicator="ebitgrowth"
           title="Q/Q EBIT Growth"
           chartData={[]}
-        /> */}
+        />
       </div>
-      <div className="w-1/5">{/* <NewsFeed /> */}</div>
+      <div className="w-1/5">
+        <NewsFeed />
+      </div>
     </div>
   )
 }
