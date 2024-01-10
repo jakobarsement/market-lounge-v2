@@ -5,8 +5,8 @@ import { useEffect, useState } from 'react'
 
 const SharePriceChart = () => {
   const [chartData, setChartData] = useState<any[]>([])
-  const company = 'AAPL'
-  const url = `${finPrepBaseURL}/historical-price-full/${company}?serietype=line&apikey=${finPrepApiKey}`
+  const companySymbol = 'AAPL'
+  const url = `${finPrepBaseURL}/historical-price-full/${companySymbol}?serietype=line&apikey=${finPrepApiKey}`
 
   useEffect(() => {
     fetch(url)
@@ -25,8 +25,8 @@ const SharePriceChart = () => {
   const stockOptions = {
     series: [
       {
-        id: company,
-        name: company,
+        id: companySymbol,
+        name: companySymbol,
         data: chartData,
         tooltip: {
           valueDecimals: 2,

@@ -11,8 +11,8 @@ type Props = {
 
 function RatioChart({ indicator, yAxisLabel }: Props) {
   const [chartData, setChartData] = useState<any[]>([])
-  const company = 'AAPL'
-  const apiUrl = `${finPrepBaseURL}/ratios/${company}?period=quarter&limit=140&apikey=${finPrepApiKey}`
+  const companySymbol = 'AAPL'
+  const apiUrl = `${finPrepBaseURL}/ratios/${companySymbol}?period=quarter&limit=140&apikey=${finPrepApiKey}`
 
   useEffect(() => {
     fetch(apiUrl)
@@ -74,7 +74,7 @@ function RatioChart({ indicator, yAxisLabel }: Props) {
     },
     series: [
       {
-        name: company,
+        name: companySymbol,
         data: chartData.map((data) => data[indicator]),
         color: 'rgb(209, 156, 113)',
         lineWidth: 1.9,

@@ -3,13 +3,12 @@ import * as d3 from 'd3'
 
 type ChartDataItem = any
 type Props = {
-  company: string
   indicator: string
   title: string
   chartData: ChartDataItem[]
 }
 
-const IntensityBar = ({ company, indicator, title, chartData }: Props) => {
+const IntensityBar = ({ indicator, title, chartData }: Props) => {
   let barWidth = 96
   let barHeight = 9.5
 
