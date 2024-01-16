@@ -1,17 +1,17 @@
 'use client'
 import React, { useState, useContext } from 'react'
+import { useRouter } from 'next/navigation'
 import { upperCase } from 'lodash'
 
 const LandingPage = () => {
-  const [searchTerm, setSearchTerm] = useState('')
-  // const { setCompanySymbol } = useContext(CompanyContext)
+  const router = useRouter()
+  let searchTerm = ''
 
-  // const handleSubmit = (e: React.KeyboardEvent<HTMLInputElement>) => {
-  //   if ((e.key === 'Enter' || e.type === 'click') && !!searchTerm) {
-  //     // setCompanySymbol(searchTerm)
-  //     history.push(`/company/${upperCase(searchTerm)}`)
-  //   }
-  // }
+  const handleSubmit = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if ((e.key === 'Enter' || e.type === 'click') && !!searchTerm) {
+      router.push(`/company/${upperCase(searchTerm)}`)
+    }
+  }
 
   return (
     <div className="h-80vh flex items-center justify-center">
@@ -29,7 +29,8 @@ const LandingPage = () => {
               type="text"
               placeholder="search company ticker"
               className="searchbar w-60vw h-60px text-whitesmoke text-24px rounded-31px bg-rgb-76 px-20px border-none text-center focus:outline-none"
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e) => (searchTerm = e.target.value)}
+              onKeyDown={handleSubmit}
             />
           </div>
 
