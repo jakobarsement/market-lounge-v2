@@ -1,7 +1,22 @@
 'use client'
-import React, { useState, useContext } from 'react'
+import React from 'react'
 import { useRouter } from 'next/navigation'
 import { upperCase } from 'lodash'
+import Link from 'next/link'
+
+const COMPANIES = [
+  'MSFT',
+  'GOOG',
+  'AMZN',
+  'UPWK',
+  'BABA',
+  'FVRR',
+  'BYND',
+  'TCEHY',
+  'ETSY',
+  'DIS',
+  'F',
+]
 
 const LandingPage = () => {
   const router = useRouter()
@@ -38,13 +53,17 @@ const LandingPage = () => {
             <p className="whats-trending text-three text-20px mr-8px mb-0 font-normal">
               What's trending:
             </p>
-            <button className="contact-submit-button h-28px font-Hind-Light text-whitesmoke text-16px bg-rgb-102 mx-3px my-3px rounded-10px font-normal">
-              MSFT
-            </button>
-            <button className="contact-submit-button h-28px font-Hind-Light text-whitesmoke text-16px bg-rgb-102 mx-3px my-3px rounded-10px font-normal">
-              GOOG
-            </button>
-            {/* Include other buttons similarly */}
+            {COMPANIES.map((name) => {
+              return (
+                <Link
+                  key={name}
+                  href={`/company/${name}`}
+                  className="contact-submit-button h-28px font-Hind-Light text-whitesmoke text-16px bg-rgb-102 mx-3px my-3px rounded-10px font-normal"
+                >
+                  {name}
+                </Link>
+              )
+            })}
           </div>
         </div>
       </div>
@@ -54,17 +73,3 @@ const LandingPage = () => {
 }
 
 export default LandingPage
-
-{
-  /* <button className="contact-submit-button">MSFT</button>
-<button className="contact-submit-button">GOOG</button>
-<button className="contact-submit-button">AMZN</button>
-<button className="contact-submit-button">UPWK</button>
-<button className="contact-submit-button">BABA</button>
-<button className="contact-submit-button">FVRR</button>
-<button className="contact-submit-button">BYND</button>
-<button className="contact-submit-button">TCEHY</button>
-<button className="contact-submit-button">ETSY</button>
-<button className="contact-submit-button">DIS</button>
-<button className="contact-submit-button">F</button> */
-}
