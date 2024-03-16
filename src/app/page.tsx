@@ -32,7 +32,7 @@ const LandingPage = () => {
     <div className="h-80vh flex items-center justify-center">
       <div className="main w-full">
         <div className="content w-758 mx-auto">
-          <h1 className="font-Hind-Light text-three mb-0 text-center text-6xl font-normal">
+          <h1 className="font-Hind-Light mb-0 text-center text-6xl font-normal text-three">
             market lounge
           </h1>
 
@@ -50,8 +50,8 @@ const LandingPage = () => {
           </div>
 
           <div className="p-10px lg:p-15px flex flex-wrap items-center justify-center">
-            <p className="whats-trending text-three text-20px mr-8px mb-0 font-normal">
-              What's trending:
+            <p className="whats-trending text-20px mr-8px mb-0 font-normal text-three">
+              {`What's trending:`}
             </p>
             {COMPANIES.map((name) => {
               return (
@@ -67,7 +67,7 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
-      <div className="bottom-2px h-190px bg-primary-background absolute z-[-1] w-screen bg-center bg-no-repeat" />
+      <div className="bottom-2px h-190px absolute z-[-1] w-screen bg-primary-background bg-center bg-no-repeat" />
     </div>
   )
 }
