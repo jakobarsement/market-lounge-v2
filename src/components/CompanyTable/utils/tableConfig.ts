@@ -1,4 +1,3 @@
-import { finPrepApiKey, finPrepBaseURL } from '@/utils/futureEnvVariables'
 const companySymbol = 'AAPL'
 
 interface TableConfigItem {
@@ -10,51 +9,51 @@ export const tableConfig: TableConfigItem[] = [
   {
     title: 'Market Cap',
     location: '[0].marketCap',
-    apiUrl: `${finPrepBaseURL}/market-capitalization/${companySymbol}?apikey=${finPrepApiKey}`,
+    apiUrl: `${process.env.NEXT_PUBLIC_FINPREP_BASE_URL}/market-capitalization/${companySymbol}?apikey=${process.env.NEXT_PUBLIC_FINPREP_API_KEY}`,
   },
   {
     title: 'Avg. Volume',
     location: '[0].avgVolume',
-    apiUrl: `${finPrepBaseURL}/quote/${companySymbol}?apikey=${finPrepApiKey}`,
+    apiUrl: `${process.env.NEXT_PUBLIC_FINPREP_BASE_URL}/quote/${companySymbol}?apikey=${process.env.NEXT_PUBLIC_FINPREP_API_KEY}`,
   },
   {
     title: 'Cash & Eq.',
     location: '[0].cashAndCashEquivalents',
-    apiUrl: `${finPrepBaseURL}/balance-sheet-statement/${companySymbol}?limit=120&apikey=${finPrepApiKey}`,
+    apiUrl: `${process.env.NEXT_PUBLIC_FINPREP_BASE_URL}/balance-sheet-statement/${companySymbol}?limit=120&apikey=${process.env.NEXT_PUBLIC_FINPREP_API_KEY}`,
   },
   {
     title: 'QEPS',
     location: '[0].eps',
-    apiUrl: `${finPrepBaseURL}/income-statement/${companySymbol}?period=quarter&limit=400&apikey=${finPrepApiKey}`,
+    apiUrl: `${process.env.NEXT_PUBLIC_FINPREP_BASE_URL}/income-statement/${companySymbol}?period=quarter&limit=400&apikey=${process.env.NEXT_PUBLIC_FINPREP_API_KEY}`,
   },
   {
     title: 'Enterprise Value',
     location: '[0].enterpriseValue',
-    apiUrl: `${finPrepBaseURL}/enterprise-values/${companySymbol}?period=quarter&limit=130&apikey=${finPrepApiKey}`,
+    apiUrl: `${process.env.NEXT_PUBLIC_FINPREP_BASE_URL}/enterprise-values/${companySymbol}?period=quarter&limit=130&apikey=${process.env.NEXT_PUBLIC_FINPREP_API_KEY}`,
   },
   {
     title: 'Dividend',
     location: '[0].dividendYielPercentageTTM',
-    apiUrl: `${finPrepBaseURL}/ratios-ttm/${companySymbol}?apikey=${finPrepApiKey}`,
+    apiUrl: `${process.env.NEXT_PUBLIC_FINPREP_BASE_URL}/ratios-ttm/${companySymbol}?apikey=${process.env.NEXT_PUBLIC_FINPREP_API_KEY}`,
   },
   {
     title: 'Quick Ratio',
     location: '[0].quickRatioTTM',
-    apiUrl: `${finPrepBaseURL}/ratios-ttm/${companySymbol}?apikey=${finPrepApiKey}`,
+    apiUrl: `${process.env.NEXT_PUBLIC_FINPREP_BASE_URL}/ratios-ttm/${companySymbol}?apikey=${process.env.NEXT_PUBLIC_FINPREP_API_KEY}`,
   },
   {
     title: 'Current Ratio',
     location: '[0].currentRatioTTM',
-    apiUrl: `${finPrepBaseURL}/ratios-ttm/${companySymbol}?apikey=${finPrepApiKey}`,
+    apiUrl: `${process.env.NEXT_PUBLIC_FINPREP_BASE_URL}/ratios-ttm/${companySymbol}?apikey=${process.env.NEXT_PUBLIC_FINPREP_API_KEY}`,
   },
   {
     title: 'PEG Ratio',
     location: '[0].pegRatioTTM',
-    apiUrl: `${finPrepBaseURL}/ratios-ttm/${companySymbol}?apikey=${finPrepApiKey}`,
+    apiUrl: `${process.env.NEXT_PUBLIC_FINPREP_BASE_URL}/ratios-ttm/${companySymbol}?apikey=${process.env.NEXT_PUBLIC_FINPREP_API_KEY}`,
   },
   {
     title: 'Price/Book Ratio',
     location: '[0].priceBookValueRatioTTM',
-    apiUrl: `${finPrepBaseURL}/ratios-ttm/${companySymbol}?apikey=${finPrepApiKey}`,
+    apiUrl: `${process.env.NEXT_PUBLIC_FINPREP_BASE_URL}/ratios-ttm/${companySymbol}?apikey=${process.env.NEXT_PUBLIC_FINPREP_API_KEY}`,
   },
 ]

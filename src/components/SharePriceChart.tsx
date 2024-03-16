@@ -1,12 +1,11 @@
 import Highcharts from 'highcharts/highstock'
 import HighchartsReact from 'highcharts-react-official'
-import { finPrepApiKey, finPrepBaseURL } from '@/utils/futureEnvVariables'
 import { useEffect, useState } from 'react'
 
 const SharePriceChart = () => {
   const [chartData, setChartData] = useState<any[]>([])
   const companySymbol = 'AAPL'
-  const url = `${finPrepBaseURL}/historical-price-full/${companySymbol}?serietype=line&apikey=${finPrepApiKey}`
+  const url = `${process.env.NEXT_PUBLIC_FINPREP_BASE_URL}/historical-price-full/${companySymbol}?serietype=line&apikey=${process.env.NEXT_PUBLIC_FINPREP_API_KEY}`
 
   useEffect(() => {
     fetch(url)

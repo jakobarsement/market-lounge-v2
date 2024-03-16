@@ -1,10 +1,9 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { finPrepApiKey, finPrepBaseURL } from '@/utils/futureEnvVariables'
 
 const NewsFeed = () => {
   const [data, setData] = useState([])
-  const apiUrl = `${finPrepBaseURL}/stock_news?tickers=${'AAPL'}&limit=50&apikey=${finPrepApiKey}`
+  const apiUrl = `${process.env.NEXT_PUBLIC_FINPREP_BASE_URL}/stock_news?tickers=${'AAPL'}&limit=50&apikey=${process.env.NEXT_PUBLIC_FINPREP_API_KEY}`
 
   useEffect(() => {
     fetch(apiUrl)

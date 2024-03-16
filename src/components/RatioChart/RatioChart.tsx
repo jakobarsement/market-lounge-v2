@@ -1,7 +1,6 @@
 import Highcharts from 'highcharts/highstock'
 import HighchartsReact from 'highcharts-react-official'
 import { useEffect, useState } from 'react'
-import { finPrepApiKey, finPrepBaseURL } from '@/utils/futureEnvVariables'
 import formatData from './utils/formatData'
 
 type Props = {
@@ -12,7 +11,7 @@ type Props = {
 function RatioChart({ indicator, yAxisLabel }: Props) {
   const [chartData, setChartData] = useState<any[]>([])
   const companySymbol = 'AAPL'
-  const apiUrl = `${finPrepBaseURL}/ratios/${companySymbol}?period=quarter&limit=140&apikey=${finPrepApiKey}`
+  const apiUrl = `${process.env.NEXT_PUBLIC_FINPREP_BASE_URL}/ratios/${companySymbol}?period=quarter&limit=140&apikey=${process.env.NEXT_PUBLIC_FINPREP_API_KEY}`
 
   useEffect(() => {
     fetch(apiUrl)
