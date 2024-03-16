@@ -1,12 +1,12 @@
 Market Lounge is an open source, interactive, data visualization app that seeks to help users identify important financial metrics and trends before they invest in public companies.
 
-## Getting Started
+## Getting started
 
 [Intro to React and Next](https://www.youtube.com/watch?v=h2BcitZPMn4&ab_channel=LeeRobinson) (1h 20min)
 
 1. [Clone this repository](https://support.atlassian.com/bitbucket-cloud/docs/clone-a-repository/) to a local directory of your choice.
-2. Navigate to that new repository directory with your terminal.
-3. In your terminal, run `npm install` to download all the `package.json` dependencies for the project. You should now have a `node_modules` folder in your local repository with the data `npm install` downloaded.
+2. Navigate into that new repository directory with your terminal.
+3. In your terminal, run `npm install` to download all the `package.json` dependencies for the project. You should now have a `node_modules` folder in your local repository with the 3rd party code `npm install` downloaded.
 4. In your terminal, run the development server with `npm run dev`. After the script completes, your terminal should show which location your code is running on, such as localhost:3000.
 5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 6. Request access to the Jira board [here](https://entremont.atlassian.net/jira/software/c/projects/ML/boards/1/backlog?issueLimit=100&view=detail) where we manage tasks
@@ -14,7 +14,7 @@ Market Lounge is an open source, interactive, data visualization app that seeks 
 
 ### Pages
 
-This project codes pages within the `src/app` directory. For example, `src/app/page.tsx` is the code for the home page (`/`), where `src/app/example/page.tsx` is the code for the example page (`/example`). See the Next.js routing docs [here](https://nextjs.org/docs/app/building-your-application/routing/defining-routes).
+This project has page code within the `src/app` directory. For example, `src/app/page.tsx` is the code for the home page (`/`), where `src/app/example/page.tsx` is the code for the example page (`/example`). See the Next.js routing docs [here](https://nextjs.org/docs/app/building-your-application/routing/defining-routes).
 
 ```text
 /
@@ -47,7 +47,7 @@ Our [React](https://www.youtube.com/watch?v=Tn6-PIqc4UM&ab_channel=Fireship) com
 
 ### Next.js is a modern, desired skill
 
-Many large and successful companies use Next.js ([showcase](https://nextjs.org/showcase)), and it is currently seen as a capable solution for building frontend systems, largely thanks to 1) the [React team](https://www.youtube.com/watch?v=8pDqJVdNa44&ab_channel=Honeypot) that started at Facebook, 2) open-source contributors [[1](https://github.com/facebook/react)][[2](https://github.com/vercel/next.js)], and 3) the current team behind Next.js at [Vercel](https://vercel.com/). A documentary on the creation of React can be found [here](https://youtu.be/8pDqJVdNa44?si=WDw8pvZxuVxT3s7f).
+Many large and successful companies use Next.js ([showcase](https://nextjs.org/showcase)), and it is currently seen as a top contender amongst frontend technologies largely thanks to 1) the [React team](https://www.youtube.com/watch?v=8pDqJVdNa44&ab_channel=Honeypot) that started at Facebook, 2) open-source contributors [[1](https://github.com/facebook/react)][[2](https://github.com/vercel/next.js)], and 3) the current team behind Next.js at [Vercel](https://vercel.com/). A documentary on the creation of React can be found [here](https://youtu.be/8pDqJVdNa44?si=WDw8pvZxuVxT3s7f).
 
 ### Automatic image resizing
 
@@ -63,7 +63,7 @@ Next automatically [polyfills](https://developer.mozilla.org/en-US/docs/Glossary
 
 ### Better code organization
 
-Next.js uses React.js, which makes organizing pages and components far easier. It is currently the most popular method for building rich, reactive frontend applications ([read here](https://nextjs.org/showcase)), which has a lot to do with how code is organized and maintained in React, and the server-side abilities that Next enables.
+Next.js uses React.js components, which makes organizing pages and reusable components easier. React components are currently the most popular pattern for building rich, reactive frontend applications ([read here](https://nextjs.org/showcase)).
 
 ## Tech
 
@@ -98,29 +98,28 @@ Unit testing helps us debug and refactor our highly constrained functions. See [
 └── package.json
 ```
 
-### Future tech Considerations
+### Future tech considerations
 
 - For asynchronous error handling: [here](https://www.youtube.com/shorts/ITogH7lJTyE)
 - For synchronous error handling: [react-error-boundaries](https://www.npmjs.com/package/react-error-boundary)
 - Next's microfrontend monorepo support documented [here](https://github.com/vercel/examples/tree/main/solutions/microfrontends)
 - [Storybook](https://storybook.js.org/) for isolated component work / demo
-- Project-wide code formatting (with Prettier)
 - Pre-push hooks for linting, [not pre-commit](https://www.youtube.com/watch?v=RAelLqnnOp0&ab_channel=Theo-t3%E2%80%A4gg)
 - State management: While libraries like Zustand and Jotai are tempting, we want to explore event-based state update systems to enable a [microfrontend](https://vercel.com/templates/next.js/microfrontends). A hybrid approach will likely be taken for state mgmt.
-- To begin operating like a product company rather than a builder service company, we will need to enable detailed user monitoring (such as with [Segment](https://www.youtube.com/watch?v=-5nUITqOz3Y&ab_channel=Segment)) and [A/B testing](https://medium.com/jonathans-musings/ab-testing-101-5576de6466b) so we can develop what _actually_ generates more leads vs what we _think_ will.
+- We will need to enable detailed user monitoring (such as with [Segment](https://www.youtube.com/watch?v=-5nUITqOz3Y&ab_channel=Segment)) and [A/B testing](https://medium.com/jonathans-musings/ab-testing-101-5576de6466b) so we can develop what _actually_ generates more leads vs what we _think_ will.
 - Add @components, @utils, [aliases](https://nextjs.org/docs/app/building-your-application/configuring/absolute-imports-and-module-aliases) to tsconfig.json (simplifies imports)
 - To transfer reroute logic: [middleware.ts](https://nextjs.org/docs/app/building-your-application/routing/middleware#nextresponse)
 - To prevent adding code that decreases Learning Center performance, we can time automated tests and compare the test time for the destination branch (main/master branch) with the test time for the merging branch (such as a feature/bug-fix branch) during pull requests, similar to [this article](https://medium.com/front-end-weekly/run-lighthouse-performance-audits-on-every-pull-request-6907645d2005) topic and as some open source projects do ([example](https://github.com/vercel/next.js/pull/59861#issuecomment-1867001990)).
 - [Unlighthouse](https://unlighthouse.dev/): free SEO performance tool
 - [NextAuth](https://next-auth.js.org/) for authentication
-- To build in our future pipeline, can remove `--profile` flag from package.json `build` script to increase performance
+- To build in our future pipeline, should remove `--profile` flag from package.json `build` script to increase performance
 - [Next bundle analyzer](https://www.npmjs.com/package/@next/bundle-analyzer)
 - Accessible, unstyled component libraries: [Radix UI](https://www.radix-ui.com/), [Headless UI](https://headlessui.com/), [React Aria](https://react-spectrum.adobe.com/react-aria/)
 - Great copy/paste UI library from Vercel team: [shadcn](https://ui.shadcn.com/)
 - Animation libaries: [AutoAnimate](https://create.t3.gg/en/other-recs#autoanimate), [https://create.t3.gg/en/other-recs#framer-motion](https://create.t3.gg/en/other-recs#framer-motion)
 - tsconfig [example](https://github.com/t3-oss/create-t3-app/blob/main/tsconfig.json)
 - prettier to sort import statements
-- Eslint plugins such as SonarJS [here](https://github.com/dustinspecker/awesome-eslint?tab=readme-ov-file#code-quality)
+- Eslint plugins such as SonarJS, or SonarLint [here](https://github.com/dustinspecker/awesome-eslint?tab=readme-ov-file#code-quality)
 
 ## Learn More
 
