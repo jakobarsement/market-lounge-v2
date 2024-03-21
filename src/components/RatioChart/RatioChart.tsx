@@ -14,14 +14,18 @@ function RatioChart({ indicator, yAxisLabel }: Props) {
   const apiUrl = `${process.env.NEXT_PUBLIC_FINPREP_BASE_URL}/ratios/${companySymbol}?period=quarter&limit=140&apikey=${process.env.NEXT_PUBLIC_FINPREP_API_KEY}`
 
   useEffect(() => {
-    fetch(apiUrl)
-      .then((res) => res.json()) // Parse the response to JSON
-      .then((data) => {
-        data = formatData(data)
-        setChartData(data)
-      })
-      .catch((error) => console.error('Error:', error))
-  }, [])
+    const fetchData = async () => {
+      try {
+        const res = await fetch(apiUrl)
+        const data = await res.json()
+        setChartData(formatData(data))
+      } catch (error) {
+        console.error('Error:', error)
+      }
+    }
+
+    fetchData()
+  }, [apiUrl])
 
   const options = {
     chart: {

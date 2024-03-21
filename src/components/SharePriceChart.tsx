@@ -70,7 +70,8 @@ const SharePriceChart = () => {
     },
   }
 
-  if (!chartData.length) return null
+  if (!chartData?.length) return null
+
   return (
     <div className="">
       <HighchartsReact
