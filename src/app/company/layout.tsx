@@ -1,5 +1,5 @@
+import PrimaryNavbar from '@components/PrimaryNavbar'
 import type { Metadata } from 'next'
-import PrimaryNavbar from '@/components/PrimaryNavbar'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -12,10 +12,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <main>
       <PrimaryNavbar />
       <div className="h-16 min-w-max bg-intensity-bar"></div>
-      <body className="bg-primary-background">{children}</body>
-    </html>
+      <div>{children}</div>
+    </main>
   )
 }

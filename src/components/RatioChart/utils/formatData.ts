@@ -10,6 +10,8 @@ type OriginalData = {
 type FormattedData = { formattedDate: string } & OriginalData
 
 export default function formatData(data: OriginalData[]): FormattedData[] {
+  if (!data?.length) return []
+
   return data.slice(0, 16).map(({ date, period, ...rest }) => ({
     date,
     period,

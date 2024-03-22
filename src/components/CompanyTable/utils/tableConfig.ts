@@ -1,3 +1,4 @@
+// TODO change this when moving to paid tier of finprep
 const companySymbol = 'AAPL'
 
 interface TableConfigItem {
@@ -5,6 +6,7 @@ interface TableConfigItem {
   location: string
   apiUrl: string
 }
+
 export const tableConfig: TableConfigItem[] = [
   {
     title: 'Market Cap',

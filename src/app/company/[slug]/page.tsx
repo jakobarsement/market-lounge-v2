@@ -1,10 +1,10 @@
 'use client'
-import CompanyHeader from '@/components/CompanyHeader'
-import SharePriceChart from '@/components/SharePriceChart'
-import CompanyTable from '@/components/CompanyTable/CompanyTable'
-import IntensityBar from '@/components/IntensityBar'
-import NewsFeed from '@/components/NewsFeed'
-import RatioChart from '@/components/RatioChart/RatioChart'
+import CompanyHeader from '@components/CompanyHeader'
+import SharePriceChart from '@components/SharePriceChart'
+import CompanyTable from '@components/CompanyTable/CompanyTable'
+import IntensityBar from '@components/IntensityBar'
+import NewsFeed from '@components/NewsFeed'
+import RatioChart from '@components/RatioChart/RatioChart'
 const CompanyPage = () => {
   return (
     <div className="flex w-full">

@@ -11,20 +11,19 @@ type Props = {
 function RatioChart({ indicator, yAxisLabel }: Props) {
   const [chartData, setChartData] = useState<any[]>([])
   const companySymbol = 'AAPL'
+
   const apiUrl = `${process.env.NEXT_PUBLIC_FINPREP_BASE_URL}/ratios/${companySymbol}?period=quarter&limit=140&apikey=${process.env.NEXT_PUBLIC_FINPREP_API_KEY}`
 
   useEffect(() => {
-    const fetchData = async () => {
+    ;(async () => {
       try {
         const res = await fetch(apiUrl)
         const data = await res.json()
         setChartData(formatData(data))
       } catch (error) {
-        console.error('Error:', error)
+        console.error('Error fetching RatioChart data:', error)
       }
-    }
-
-    fetchData()
+    })()
   }, [apiUrl])
 
   const options = {

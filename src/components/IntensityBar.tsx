@@ -12,8 +12,10 @@ const IntensityBar = ({ indicator, title, chartData }: Props) => {
   let barWidth = 96
   let barHeight = 9.5
 
-  //get window width on change
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+  // get window width on change
+  const [windowWidth, setWindowWidth] = useState<number>(
+    typeof window !== 'undefined' ? window.innerWidth : 0
+  )
   const handleResize = () => {
     setWindowWidth(window.innerWidth)
   }

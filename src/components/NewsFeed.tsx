@@ -15,42 +15,40 @@ const NewsFeed = () => {
   }, [])
 
   function renderNewsFeeds() {
-    if (data.length) {
-      return (
-        <table>
-          {data?.map((item: any, index: number) => {
-            const { image, publishedDate, title, url } = item
-            return (
-              <tbody key={'head' + index} className="table-item">
-                <tr key={'row' + index}>
-                  <td key={'image' + index}>
-                    {image && (
-                      <img src={image} alt="img" className="feed-image" />
-                    )}
-                  </td>
-                  <td key={'title' + index} className="link-tag">
-                    {url && (
-                      <div>
-                        <a href={url} target="_blank" rel="noreferrer">
-                          {title}
-                        </a>
-                      </div>
-                    )}
-                  </td>
-                </tr>
-                <tr key={'publishDate' + index}>
-                  <td> </td>
-                  {/* <td className="date-tag">{publishedDate && formatPublishedDateTime(publishedDate)}</td> */}
-                  <td className="date-tag">{publishedDate}</td>
-                </tr>
-              </tbody>
-            )
-          })}
-        </table>
-      )
-    } else {
-      return <>No news feed available.</>
-    }
+    if (!data?.length) return <>No news feed available.</>
+
+    return (
+      <table>
+        {data?.map((item: any, index: number) => {
+          const { image, publishedDate, title, url } = item
+          return (
+            <tbody key={'head' + index} className="table-item">
+              <tr key={'row' + index}>
+                <td key={'image' + index}>
+                  {image && (
+                    <img src={image} alt="img" className="feed-image" />
+                  )}
+                </td>
+                <td key={'title' + index} className="link-tag">
+                  {url && (
+                    <div>
+                      <a href={url} target="_blank" rel="noreferrer">
+                        {title}
+                      </a>
+                    </div>
+                  )}
+                </td>
+              </tr>
+              <tr key={'publishDate' + index}>
+                <td> </td>
+                {/* <td className="date-tag">{publishedDate && formatPublishedDateTime(publishedDate)}</td> */}
+                <td className="date-tag">{publishedDate}</td>
+              </tr>
+            </tbody>
+          )
+        })}
+      </table>
+    )
   }
 
   return (

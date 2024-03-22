@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react'
 import { get } from 'lodash'
-import { convertNumberToAbbreviation } from '@/utils'
+import { convertNumberToAbbreviation } from '@utils'
 import { tableConfig } from './utils/tableConfig'
 import appendPrefixOrSuffix from './utils/appendPrefixOrSuffix'
 
@@ -14,8 +14,6 @@ function CompanyTable() {
   const [data, setData] = useState<TableDataItem[]>([])
   const [loading, setLoading] = useState<boolean>(true)
 
-  // The below useEffect fetches data for each cell and waits from all promises to resolve before
-  // rendering the table
   useEffect(() => {
     ;(async () => {
       // A promise for each cell
@@ -35,10 +33,13 @@ function CompanyTable() {
               value: formatFn(cellValue, item.title),
             }
           })
-          .catch((error) => ({
-            title: item.title,
-            value: 'NA',
-          }))
+          .catch((error) => {
+            console.log('Error fetching table data:', error)
+            return {
+              title: item.title,
+              value: 'NA',
+            }
+          })
       )
       // Set data and loading state when all promises fulfill
       Promise.all(promises)
@@ -60,12 +61,12 @@ function CompanyTable() {
           {data.map((cellConfig, index) => (
             <div
               key={`tableCell${index}`}
-              className="bg-secondary-background m-2 table-cell w-1/5 p-4 text-center"
+              className="m-2 table-cell w-1/5 bg-secondary-background p-4 text-center"
             >
-              <span className="cell-title text-eight font-bold">
+              <span className="cell-title font-bold text-eight">
                 {cellConfig?.title}:
               </span>
-              <span className="cell-content text-ml-white ml-1">
+              <span className="cell-content ml-1 text-ml-white">
                 {cellConfig?.value}
               </span>
             </div>

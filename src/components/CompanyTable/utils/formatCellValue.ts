@@ -1,4 +1,4 @@
-import { convertNumberToAbbreviation } from '@/utils'
+import { convertNumberToAbbreviation } from '@utils'
 import appendPrefixOrSuffix from './appendPrefixOrSuffix'
 
 export default function formatCellValue(
