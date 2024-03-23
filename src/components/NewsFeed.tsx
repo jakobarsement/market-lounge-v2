@@ -14,51 +14,55 @@ const NewsFeed = () => {
       .catch((error) => console.error('Error:', error))
   }, [])
 
-  function renderNewsFeeds() {
+  function renderNewsFeed() {
     if (!data?.length) return <>No news feed available.</>
 
     return (
-      <table>
+      <div className="max-h-[80vh] overflow-y-auto">
         {data?.map((item: any, index: number) => {
           const { image, publishedDate, title, url } = item
           return (
-            <tbody key={'head' + index} className="table-item">
-              <tr key={'row' + index}>
-                <td key={'image' + index}>
-                  {image && (
-                    <img src={image} alt="img" className="feed-image" />
-                  )}
-                </td>
-                <td key={'title' + index} className="link-tag">
-                  {url && (
-                    <div>
-                      <a href={url} target="_blank" rel="noreferrer">
-                        {title}
-                      </a>
-                    </div>
-                  )}
-                </td>
-              </tr>
-              <tr key={'publishDate' + index}>
-                <td> </td>
-                {/* <td className="date-tag">{publishedDate && formatPublishedDateTime(publishedDate)}</td> */}
-                <td className="date-tag">{publishedDate}</td>
-              </tr>
-            </tbody>
+            <div
+              key={'card' + index}
+              className="flex items-center gap-4 border-b border-b-eighteen p-4"
+            >
+              {image && (
+                <img
+                  src={image}
+                  alt="img"
+                  className="w-24 rounded-lg object-contain"
+                />
+              )}
+              <text className="flex flex-col text-xs text-eight ">
+                {url ? (
+                  <a
+                    href={url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-blue-700 text-sm font-semibold hover:underline"
+                  >
+                    {title}
+                  </a>
+                ) : (
+                  <p className="text-sm font-semibold">{title}</p>
+                )}
+                <p>{publishedDate}</p>
+              </text>
+            </div>
           )
         })}
-      </table>
+      </div>
     )
   }
 
   return (
-    <div className="news-feeds-table">
-      <div className="news-feed-title">
+    <div>
+      <div>
         <h3>
-          {/* <i className="fas fa-newspaper fa-1x"></i> {getCompanySymbol()} News */}
+          <i className="fas fa-newspaper fa-1x"></i> {'AAPL'} News
         </h3>
       </div>
-      {renderNewsFeeds()}
+      {renderNewsFeed()}
     </div>
   )
 }

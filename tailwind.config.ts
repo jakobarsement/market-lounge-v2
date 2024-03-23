@@ -35,6 +35,7 @@ const config: Config = {
       fourteen: 'rgba(0, 0, 0, 0.5)',
       thirteen: 'rgb(92, 91, 83)',
       fifteen: 'rgb(71, 68, 59)',
+      nineteen: 'rgb(199, 195, 181)',
     },
     extend: {
       backgroundImage: {
