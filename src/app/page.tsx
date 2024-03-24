@@ -48,7 +48,7 @@ const LandingPage = () => {
             <input
               type="text"
               placeholder="search company ticker"
-              className="text-gray-300 bg-gray-800 h-16 w-1/3 min-w-[350px] rounded-full border-none bg-eleven pl-12 text-center text-2xl focus:outline-none"
+              className="bg-gray-800 placeholder:text-opacity- h-16 w-1/3 min-w-[350px] rounded-full border-none bg-eleven text-center  text-2xl focus:outline-none"
               onChange={(e) => (searchTerm = e.target.value)}
               onKeyDown={handleSubmit}
             />
@@ -56,7 +56,7 @@ const LandingPage = () => {
 
           <div className="flex flex-wrap items-center justify-center p-2 lg:p-4">
             <p className="text-gray-700 mb-0 mr-2 text-2xl font-light">
-              {`What's trending:`}
+              What's trending:
             </p>
             {COMPANIES.map((name) => {
               return (
