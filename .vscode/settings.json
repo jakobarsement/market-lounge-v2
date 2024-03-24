@@ -1,0 +1,4 @@
+{
+  // since we are using prettier to keep lines from being too long, we can set this to on for long strings
+  "editor.wordWrap": "on"
+}
