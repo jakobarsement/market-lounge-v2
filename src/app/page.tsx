@@ -3,6 +3,8 @@ import React from 'react'
 import { useRouter } from 'next/navigation'
 import { upperCase } from 'lodash'
 import Link from 'next/link'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 const COMPANIES = [
   'MSFT',
@@ -29,28 +31,31 @@ const LandingPage = () => {
   }
 
   return (
-    <div className="h-80vh flex items-center justify-center">
-      <div className="main w-full">
-        <div className="content w-758 mx-auto">
-          <h1 className="font-Hind-Light mb-0 text-center text-6xl font-normal text-three">
+    <div className="flex h-screen items-center justify-center">
+      <div className="w-full">
+        <div className="mx-auto w-3/4">
+          <h1 className="text-gray-700 mb-0 text-center text-6xl font-light text-three">
             market lounge
           </h1>
 
-          <div className="ml-0 mt-20 flex w-full justify-center">
-            <span>
-              <i className="fas fa-search fa-2x search-icon left-50px top-16px text-whitesmoke relative cursor-pointer" />
-            </span>
+          <div className="relative right-6 mt-8 flex items-center justify-center">
+            <FontAwesomeIcon
+              icon={faSearch}
+              className="text-gray-400 relative left-12 ml-4"
+              size="2x"
+              color="whitesmoke"
+            />
             <input
               type="text"
               placeholder="search company ticker"
-              className="searchbar w-60vw h-60px text-whitesmoke text-24px rounded-31px bg-rgb-76 px-20px border-none text-center focus:outline-none"
+              className="text-gray-300 bg-gray-800 h-16 w-1/3 min-w-[350px] rounded-full border-none bg-eleven pl-12 text-center text-2xl focus:outline-none"
               onChange={(e) => (searchTerm = e.target.value)}
               onKeyDown={handleSubmit}
             />
           </div>
 
-          <div className="p-10px lg:p-15px flex flex-wrap items-center justify-center">
-            <p className="whats-trending text-20px mr-8px mb-0 font-normal text-three">
+          <div className="flex flex-wrap items-center justify-center p-2 lg:p-4">
+            <p className="text-gray-700 mb-0 mr-2 text-2xl font-light">
               {`What's trending:`}
             </p>
             {COMPANIES.map((name) => {
@@ -58,16 +63,26 @@ const LandingPage = () => {
                 <Link
                   key={name}
                   href={`/company/${name}`}
-                  className="contact-submit-button h-28px font-Hind-Light text-whitesmoke text-16px bg-rgb-102 mx-3px my-3px rounded-10px font-normal"
+                  className="text-white bg-gray-500 mx-1 my-1 h-7 rounded-full text-base font-light"
                 >
-                  {name}
+                  <button className="btn btn-sm">{name}</button>
                 </Link>
               )
             })}
           </div>
         </div>
       </div>
-      <div className="bottom-2px h-190px absolute z-[-1] w-screen bg-primary-background bg-center bg-no-repeat" />
+      <svg
+        className="pointer-events-none absolute bottom-0 w-full"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1440 320"
+      >
+        <path
+          fill="#0099ff"
+          fillOpacity="0.1"
+          d="M0,96L48,106.7C96,117,192,139,288,138.7C384,139,480,117,576,122.7C672,128,768,160,864,154.7C960,149,1056,107,1152,106.7C1248,107,1344,149,1392,170.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+        ></path>
+      </svg>
     </div>
   )
 }
