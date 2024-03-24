@@ -7,7 +7,7 @@ import NewsFeed from '@components/NewsFeed'
 import RatioChart from '@components/RatioChart/RatioChart'
 const CompanyPage = () => {
   return (
-    <div className="flex w-full">
+    <div className="mt-4 flex w-full">
       <div className="w-1/5">
         <RatioChart yAxisLabel="PE Ratio" indicator="priceEarningsRatio" />
         <RatioChart yAxisLabel="Return On Equity" indicator="returnOnEquity" />
@@ -31,7 +31,7 @@ const CompanyPage = () => {
           chartData={[]}
         />
       </div>
-      <div className="w-1/5">
+      <div className="ml-4 w-1/5">
         <NewsFeed />
       </div>
     </div>

@@ -1,4 +1,6 @@
 'use client'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope, faNewspaper } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
 
 const NewsFeed = () => {
@@ -18,7 +20,7 @@ const NewsFeed = () => {
     if (!data?.length) return <>No news feed available.</>
 
     return (
-      <div className="max-h-[80vh] overflow-y-auto">
+      <div className="max-h-[85vh] overflow-y-auto">
         {data?.map((item: any, index: number) => {
           const { image, publishedDate, title, url } = item
           return (
@@ -57,11 +59,10 @@ const NewsFeed = () => {
 
   return (
     <div>
-      <div>
-        <h3>
-          <i className="fas fa-newspaper fa-1x"></i> {'AAPL'} News
-        </h3>
-      </div>
+      <h3 className="flex justify-center text-lg font-semibold text-three">
+        <FontAwesomeIcon icon={faNewspaper} className="fa-xl text-three" />
+        <text className="ml-4">News Feed</text>
+      </h3>
       {renderNewsFeed()}
     </div>
   )
