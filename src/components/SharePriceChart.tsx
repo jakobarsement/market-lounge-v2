@@ -5,20 +5,32 @@ import { useEffect, useState } from 'react'
 const SharePriceChart = () => {
   const [chartData, setChartData] = useState<any[]>([])
   const companySymbol = 'AAPL'
+
   const url = `${process.env.NEXT_PUBLIC_FINPREP_BASE_URL}/historical-price-full/${companySymbol}?serietype=line&apikey=${process.env.NEXT_PUBLIC_FINPREP_API_KEY}`
 
   useEffect(() => {
-    fetch(url)
-      .then((res) => res.json()) // Parse the response to JSON
-      .then((data) => {
+    const fetchChartData = async () => {
+      try {
+        const response = await fetch(url)
+        if (!response.ok) {
+          throw new Error(
+            `Error fetching SharePriceChart data: ${response.status}`
+          )
+        }
+        const data = await response.json()
         const historical: { date: Date; close: number }[] = data.historical
 
         const formattedData = historical
           ?.map((points) => [new Date(points.date).getTime(), points.close])
           .sort((a, b) => a[0] - b[0])
+
         setChartData(formattedData)
-      })
-      .catch((error) => console.error('Error:', error))
+      } catch (error) {
+        console.error('Error fetching SharePriceChart data:', error)
+      }
+    }
+
+    fetchChartData()
   }, [])
 
   const stockOptions = {
@@ -64,6 +76,14 @@ const SharePriceChart = () => {
     },
     rangeSelector: {
       enabled: false,
+      selected: 0,
+      buttons: [
+        {
+          type: 'year',
+          count: 5,
+          text: '5y',
+        },
+      ],
     },
     scrollbar: {
       enabled: false,
