@@ -13,7 +13,7 @@ const NewsFeed = () => {
       .then((data) => {
         setData(data)
       })
-      .catch((error) => console.error('Error:', error))
+      .catch((error) => console.error('Error fetching NewsFeed data:', error))
   }, [])
 
   function renderNewsFeed() {
