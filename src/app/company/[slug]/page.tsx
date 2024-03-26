@@ -18,18 +18,6 @@ const CompanyPage = () => {
         <CompanyHeader />
         <SharePriceChart />
         <CompanyTable />
-        <IntensityBar
-          key="revenueGrowth"
-          indicator="revenueGrowth"
-          title="Q/Q Revenue Growth"
-          chartData={[]}
-        />
-        <IntensityBar
-          key="ebitgrowth"
-          indicator="ebitgrowth"
-          title="Q/Q EBIT Growth"
-          chartData={[]}
-        />
       </div>
       <div className="ml-4 w-1/5">
         <NewsFeed />
