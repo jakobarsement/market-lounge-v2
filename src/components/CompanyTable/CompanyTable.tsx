@@ -57,18 +57,11 @@ function CompanyTable() {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <div className="company-table flex flex-wrap items-center justify-center">
+        <div className="flex flex-wrap">
           {data.map((cellConfig, index) => (
-            <div
-              key={`tableCell${index}`}
-              className="m-2 table-cell w-1/5 bg-secondary-background p-4 text-center"
-            >
-              <span className="cell-title font-bold text-eight">
-                {cellConfig?.title}:
-              </span>
-              <span className="cell-content ml-1 text-ml-white">
-                {cellConfig?.value}
-              </span>
+            <div key={`tableCell${index}`} className="table-cell w-[215px] p-2">
+              <span className="font-bold text-eight">{cellConfig?.title}:</span>
+              <span className="ml-1 text-ml-white">{cellConfig?.value}</span>
             </div>
           ))}
         </div>
