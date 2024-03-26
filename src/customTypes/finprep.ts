@@ -36,3 +36,10 @@ export type CompanyProfile = {
   isAdr: boolean
   isFund: boolean
 }
+
+export enum CompanyIndicators {
+  PriceToEarnings = 'priceEarningsRatio',
+  ReturnOnEquity = 'returnOnEquity',
+  DebtToEquity = 'debtEquityRatio',
+  CurrentRatio = 'currentRatio',
+}

@@ -3,9 +3,10 @@ import Highcharts from 'highcharts/highstock'
 import HighchartsReact from 'highcharts-react-official'
 import { useEffect, useState } from 'react'
 import formatData from './utils/formatData'
+import { CompanyIndicators } from '@customTypes/finprep'
 
 type Props = {
-  indicator: string
+  indicator: CompanyIndicators
   yAxisLabel: string
 }
 
@@ -89,7 +90,7 @@ function RatioChart({ indicator, yAxisLabel }: Props) {
   }
 
   return (
-    <div className="company-ratio-chart">
+    <div>
       <HighchartsReact highcharts={Highcharts} options={options} />
     </div>
   )
