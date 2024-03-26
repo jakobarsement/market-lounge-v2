@@ -35,7 +35,7 @@ const NewsFeed = () => {
                   className="w-24 rounded-lg object-contain"
                 />
               )}
-              <text className="flex flex-col text-xs text-eight ">
+              <span className="flex flex-col text-xs text-eight ">
                 {url ? (
                   <a
                     href={url}
@@ -49,7 +49,7 @@ const NewsFeed = () => {
                   <p className="text-sm font-semibold">{title}</p>
                 )}
                 <p>{publishedDate}</p>
-              </text>
+              </span>
             </div>
           )
         })}
@@ -60,8 +60,8 @@ const NewsFeed = () => {
   return (
     <div>
       <h3 className="flex justify-center text-lg font-semibold text-three">
-        <FontAwesomeIcon icon={faNewspaper} className="fa-xl text-three" />
-        <text className="ml-4">News Feed</text>
+        <FontAwesomeIcon icon={faNewspaper} className="h-7 w-7 text-three" />
+        <span className="ml-4">News Feed</span>
       </h3>
       {renderNewsFeed()}
     </div>

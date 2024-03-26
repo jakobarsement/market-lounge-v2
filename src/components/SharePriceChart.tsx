@@ -1,3 +1,4 @@
+'use client'
 import Highcharts from 'highcharts/highstock'
 import HighchartsReact from 'highcharts-react-official'
 import { useEffect, useState } from 'react'

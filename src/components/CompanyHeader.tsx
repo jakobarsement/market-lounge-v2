@@ -1,3 +1,4 @@
+'use client'
 import { CompanyProfile } from '@customTypes/finprep'
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

@@ -38,11 +38,10 @@ const LandingPage = () => {
             market lounge
           </h1>
 
-          <div className="relative right-6 mt-8 flex items-center justify-center">
+          <div className="relative right-6 mt-6 flex items-center justify-center">
             <FontAwesomeIcon
               icon={faSearch}
-              className="text-gray-400 relative left-12 ml-4"
-              size="2x"
+              className="text-gray-400 relative left-10 ml-6 h-6 w-6"
               color="whitesmoke"
             />
             <input
@@ -54,9 +53,9 @@ const LandingPage = () => {
             />
           </div>
 
-          <div className="flex flex-wrap items-center justify-center p-2 lg:p-4">
+          <div className="flex flex-wrap items-center justify-center p-10">
             <p className="text-gray-700 mb-0 mr-2 text-2xl font-light">
-              What's trending:
+              {`What's trending:`}
             </p>
             {COMPANIES.map((name) => {
               return (
