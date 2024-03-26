@@ -1,17 +1,17 @@
 'use client'
-import Highcharts from 'highcharts/highstock'
+import Highcharts, { Options } from 'highcharts/highstock'
 import HighchartsReact from 'highcharts-react-official'
 import { useEffect, useState } from 'react'
-import formatData from './utils/formatData'
-import { CompanyIndicators } from '@customTypes/finprep'
+import fmtData from './utils/fmtData'
+import { CompanyRatios } from '@customTypes/finprep'
 
-type Props = {
-  indicator: CompanyIndicators
+type RatioChartProps = {
+  indicator: keyof Omit<CompanyRatios, 'formattedDate'>
   yAxisLabel: string
 }
 
-function RatioChart({ indicator, yAxisLabel }: Props) {
-  const [chartData, setChartData] = useState<any[]>([])
+function RatioChart({ indicator, yAxisLabel }: RatioChartProps) {
+  const [chartData, setChartData] = useState<CompanyRatios[]>([])
   const companySymbol = 'AAPL'
 
   const apiUrl = `${process.env.NEXT_PUBLIC_FINPREP_BASE_URL}/ratios/${companySymbol}?period=quarter&limit=140&apikey=${process.env.NEXT_PUBLIC_FINPREP_API_KEY}`
@@ -20,22 +20,22 @@ function RatioChart({ indicator, yAxisLabel }: Props) {
     ;(async () => {
       try {
         const res = await fetch(apiUrl)
-        const data = await res.json()
-        setChartData(formatData(data))
+        const data: CompanyRatios[] = await res.json()
+        setChartData(fmtData(data))
       } catch (error) {
         console.error('Error fetching RatioChart data:', error)
       }
     })()
   }, [apiUrl])
 
-  const options = {
+  const options: Options = {
     chart: {
       type: 'line',
       height: 200,
       backgroundColor: 'rgb(22,22,20)',
     },
     title: {
-      text: '',
+      text: undefined,
     },
     xAxis: {
       categories: chartData.reverse().map((data: any) => data.formattedDate),
@@ -47,9 +47,6 @@ function RatioChart({ indicator, yAxisLabel }: Props) {
         text: yAxisLabel,
         style: {
           color: 'white',
-        },
-        labels: {
-          // maxStaggerLines: 1,
         },
       },
       gridLineColor: 'rgb(199, 195, 181)',
@@ -69,15 +66,13 @@ function RatioChart({ indicator, yAxisLabel }: Props) {
           enabled: false,
           borderWidth: 0,
           color: 'white',
-          style: {
-            textOutline: 0,
-          },
         },
         enableMouseTracking: true,
       },
     },
     series: [
       {
+        type: 'line',
         name: companySymbol,
         data: chartData.map((data) => data[indicator]),
         color: 'rgb(209, 156, 113)',
@@ -87,10 +82,13 @@ function RatioChart({ indicator, yAxisLabel }: Props) {
         },
       },
     ],
+    legend: {
+      enabled: false,
+    },
   }
 
   return (
-    <div>
+    <div className="py-2">
       <HighchartsReact highcharts={Highcharts} options={options} />
     </div>
   )

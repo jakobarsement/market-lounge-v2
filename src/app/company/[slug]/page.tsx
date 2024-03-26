@@ -1,37 +1,28 @@
+'use client'
 import CompanyHeader from '@components/CompanyHeader'
 import SharePriceChart from '@components/SharePriceChart'
 import CompanyTable from '@components/CompanyTable/CompanyTable'
 import NewsFeed from '@components/NewsFeed'
 import RatioChart from '@components/RatioChart/RatioChart'
-import IntensityBar from '@components/IntensityBar'
-import { CompanyIndicators } from '@customTypes/finprep'
+import GrowthChart from '@components/GrowthChart/GrowthChart'
 
 const CompanyPage = () => {
   return (
     <div className="flex w-full pt-4">
       <div className="w-1/5">
-        <RatioChart
-          yAxisLabel="PE Ratio"
-          indicator={CompanyIndicators.PriceToEarnings}
-        />
+        <RatioChart yAxisLabel="PE Ratio" indicator={'priceEarningsRatio'} />
         <RatioChart
           yAxisLabel="Return On Equity"
-          indicator={CompanyIndicators.ReturnOnEquity}
+          indicator={'returnOnEquity'}
         />
-        <RatioChart
-          yAxisLabel="Debt to Equity"
-          indicator={CompanyIndicators.DebtToEquity}
-        />
-        <RatioChart
-          yAxisLabel="Current Ratio"
-          indicator={CompanyIndicators.CurrentRatio}
-        />
+        <RatioChart yAxisLabel="Debt to Equity" indicator={'debtEquityRatio'} />
+        <RatioChart yAxisLabel="Current Ratio" indicator={'currentRatio'} />
       </div>
       <div className="w-3/5">
         <CompanyHeader />
         <SharePriceChart />
         <CompanyTable />
-        {/* <IntensityBar /> */}
+        <GrowthChart title="Q/Q Revenue Growth" indicator="revenueGrowth" />
       </div>
       <div className="ml-4 w-1/5">
         <NewsFeed />

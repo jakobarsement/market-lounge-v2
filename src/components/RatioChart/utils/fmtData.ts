@@ -1,18 +1,12 @@
-type OriginalData = {
-  date: string
-  period: string
-  returnOnEquity: number
-  debtEquityRatio: number
-  currentRatio: number
-  priceEarningsRatio: number
-}
+import { CompanyRatios } from '@customTypes/finprep'
 
-type FormattedData = { formattedDate: string } & OriginalData
+type FormattedData = { formattedDate: string } & Partial<CompanyRatios>
 
-export default function formatData(data: OriginalData[]): FormattedData[] {
+export default function fmtData(data: CompanyRatios[]) {
   if (!data?.length) return []
 
   return data.slice(0, 16).map(({ date, period, ...rest }) => ({
+    ...rest,
     date,
     period,
     returnOnEquity: Math.round(rest.returnOnEquity * 100) / 100,
