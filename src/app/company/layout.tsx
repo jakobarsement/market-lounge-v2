@@ -13,8 +13,6 @@ export default function RootLayout({
 }) {
   return (
     <main>
-      <PrimaryNavbar />
-      <div className="h-16 min-w-max bg-intensity-bar"></div>
       <div>{children}</div>
     </main>
   )

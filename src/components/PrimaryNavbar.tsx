@@ -3,11 +3,7 @@ import Link from 'next/link'
 export default function PrimaryNavbar() {
   return (
     <div className="header-main">
-      <div className="logo-left">
-        <Link className="logo-container" href="/">
-          ML
-        </Link>
-      </div>
+      <div className="logo-left"></div>
       <div className="flex justify-center">
         <Link className="option" href="/">
           <h4>Home</h4>
