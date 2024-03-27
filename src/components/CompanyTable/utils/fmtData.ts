@@ -1,7 +1,7 @@
 import { convertNumberToAbbreviation } from '@utils'
 import appendPrefixOrSuffix from './appendPrefixOrSuffix'
 
-export default function formatCellValue(
+export function fmtData(
   dataPoint: number | string | null,
   title: string
 ): string {

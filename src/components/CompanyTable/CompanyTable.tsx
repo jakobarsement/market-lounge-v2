@@ -4,6 +4,7 @@ import { get } from 'lodash'
 import { convertNumberToAbbreviation } from '@utils'
 import { tableConfig } from './utils/tableConfig'
 import appendPrefixOrSuffix from './utils/appendPrefixOrSuffix'
+import { fmtData } from './utils/fmtData'
 
 interface TableDataItem {
   title: string
@@ -30,11 +31,11 @@ function CompanyTable() {
 
             return {
               title: item.title,
-              value: formatFn(cellValue, item.title),
+              value: fmtData(cellValue, item.title),
             }
           })
           .catch((error) => {
-            console.log('Error fetching table data:', error)
+            console.error('Error fetching table data:', error)
             return {
               title: item.title,
               value: 'NA',
@@ -57,7 +58,7 @@ function CompanyTable() {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap justify-center">
           {data.map((cellConfig, index) => (
             <div key={`tableCell${index}`} className="table-cell w-[215px] p-2">
               <span className="font-bold text-eight">{cellConfig?.title}:</span>
@@ -71,28 +72,3 @@ function CompanyTable() {
 }
 
 export default CompanyTable
-
-function formatFn(dataPoint: number | string | null, title: string): string {
-  const decimalDigits = 3
-
-  if (dataPoint !== null && !isNaN(Number(dataPoint))) {
-    if (typeof dataPoint === 'number') {
-      if (dataPoint > 1000) {
-        dataPoint = Number(dataPoint).toFixed(0)
-        dataPoint = convertNumberToAbbreviation(dataPoint)
-      } else {
-        dataPoint =
-          Math.trunc(dataPoint * Math.pow(10, decimalDigits)) /
-          Math.pow(10, decimalDigits)
-      }
-
-      dataPoint = appendPrefixOrSuffix(String(dataPoint), title)
-    }
-  } else if (dataPoint === null) {
-    dataPoint = 'NA'
-  } else {
-    dataPoint = 'Error'
-  }
-
-  return String(dataPoint)
-}

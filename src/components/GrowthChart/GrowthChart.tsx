@@ -4,12 +4,7 @@ import HighchartsReact from 'highcharts-react-official'
 import Highcharts, { Options } from 'highcharts/highstock'
 import fmtData from './utils/fmtData'
 
-type GrowthChartProps = {
-  indicator: keyof Omit<CompanyGrowth, 'formattedDate'>
-  title: string
-}
-
-const GrowthChart = ({ indicator, title }: GrowthChartProps) => {
+const GrowthChart = () => {
   const [chartData, setChartData] = useState<CompanyGrowth[]>([])
   const companySymbol = 'AAPL'
 
@@ -26,7 +21,6 @@ const GrowthChart = ({ indicator, title }: GrowthChartProps) => {
       }
     })()
   }, [apiUrl])
-  console.log({ chartData })
 
   const options: Options = {
     chart: {
@@ -99,7 +93,6 @@ const GrowthChart = ({ indicator, title }: GrowthChartProps) => {
 
   return (
     <>
-      <h3 className="title">{title}</h3>
       <HighchartsReact highcharts={Highcharts} options={options} />
     </>
   )

@@ -22,7 +22,7 @@ const CompanyPage = () => {
         <CompanyHeader />
         <SharePriceChart />
         <CompanyTable />
-        <GrowthChart title="Q/Q Revenue Growth" indicator="revenueGrowth" />
+        <GrowthChart />
       </div>
       <div className="ml-4 w-1/5">
         <NewsFeed />

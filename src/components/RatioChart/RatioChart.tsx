@@ -21,6 +21,7 @@ function RatioChart({ indicator, yAxisLabel }: RatioChartProps) {
       try {
         const res = await fetch(apiUrl)
         const data: CompanyRatios[] = await res.json()
+        console.log({ data })
         setChartData(fmtData(data))
       } catch (error) {
         console.error('Error fetching RatioChart data:', error)
@@ -38,7 +39,7 @@ function RatioChart({ indicator, yAxisLabel }: RatioChartProps) {
       text: undefined,
     },
     xAxis: {
-      categories: chartData.reverse().map((data: any) => data.formattedDate),
+      categories: chartData.map((data: any) => data.formattedDate),
       visible: false,
     },
     yAxis: {
@@ -88,7 +89,7 @@ function RatioChart({ indicator, yAxisLabel }: RatioChartProps) {
   }
 
   return (
-    <div className="py-2">
+    <div className="z-10 py-2">
       <HighchartsReact highcharts={Highcharts} options={options} />
     </div>
   )

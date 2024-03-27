@@ -22,7 +22,7 @@ const CompanyHeader = () => {
         const data: CompanyProfile = (await response.json())[0]
         setSummaryData(data)
       } catch (error) {
-        console.error('Failed to fetch company details:', error)
+        console.error('Error fetching CompanyHeader data:', error)
       }
     })()
   }, [])
