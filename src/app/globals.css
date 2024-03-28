@@ -3,8 +3,7 @@
 @tailwind utilities;
 
 * {
-  font-family: 'Montserrat', 'Darker Grotesque', 'Open Sans Condensed',
-    sans-serif;
+  font-family: 'Darker Grotesque', 'Open Sans Condensed', sans-serif;
   box-sizing: border-box;
   padding: 0px;
   margin: 0px;

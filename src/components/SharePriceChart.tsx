@@ -2,10 +2,13 @@
 import Highcharts from 'highcharts/highstock'
 import HighchartsReact from 'highcharts-react-official'
 import { useEffect, useState } from 'react'
+import { ChartLineColors } from '@enums/ChartLineColors'
+import { useParams } from 'next/navigation'
 
 const SharePriceChart = () => {
   const [chartData, setChartData] = useState<any[]>([])
-  const companySymbol = 'AAPL'
+  const { slug } = useParams()
+  const companySymbol = Array.isArray(slug) ? slug[0] : slug
 
   const url = `${process.env.NEXT_PUBLIC_FINPREP_BASE_URL}/historical-price-full/${companySymbol}?serietype=line&apikey=${process.env.NEXT_PUBLIC_FINPREP_API_KEY}`
 
@@ -35,17 +38,6 @@ const SharePriceChart = () => {
   }, [])
 
   const stockOptions = {
-    series: [
-      {
-        id: companySymbol,
-        name: companySymbol,
-        data: chartData,
-        tooltip: {
-          valueDecimals: 2,
-        },
-        color: 'rgb(123, 181, 230)',
-      },
-    ],
     chart: {
       height: 300,
       min: 0,
@@ -89,6 +81,17 @@ const SharePriceChart = () => {
     scrollbar: {
       enabled: false,
     },
+    series: [
+      {
+        id: companySymbol,
+        name: companySymbol,
+        data: chartData,
+        tooltip: {
+          valueDecimals: 2,
+        },
+        color: ChartLineColors.coolBlue,
+      },
+    ],
   }
 
   if (!chartData?.length) return null

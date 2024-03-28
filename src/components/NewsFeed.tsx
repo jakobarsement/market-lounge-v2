@@ -2,10 +2,14 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faNewspaper } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
+import { useParams } from 'next/navigation'
 
 const NewsFeed = () => {
   const [data, setData] = useState([])
-  const apiUrl = `${process.env.NEXT_PUBLIC_FINPREP_BASE_URL}/stock_news?tickers=${'AAPL'}&limit=50&apikey=${process.env.NEXT_PUBLIC_FINPREP_API_KEY}`
+  const { slug } = useParams()
+  const companySymbol = Array.isArray(slug) ? slug[0] : slug
+
+  const apiUrl = `${process.env.NEXT_PUBLIC_FINPREP_BASE_URL}/stock_news?tickers=${companySymbol}&limit=50&apikey=${process.env.NEXT_PUBLIC_FINPREP_API_KEY}`
 
   useEffect(() => {
     fetch(apiUrl)

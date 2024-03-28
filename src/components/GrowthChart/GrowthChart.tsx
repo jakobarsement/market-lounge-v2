@@ -3,10 +3,17 @@ import { CompanyGrowth } from '@customTypes/finprep'
 import HighchartsReact from 'highcharts-react-official'
 import Highcharts, { Options } from 'highcharts/highstock'
 import fmtData from './utils/fmtData'
+import { ChartLineColors } from '@enums/ChartLineColors'
+import { useParams } from 'next/navigation'
+
+enum ChartConstants {
+  lineWidth = 1.4,
+}
 
 const GrowthChart = () => {
   const [chartData, setChartData] = useState<CompanyGrowth[]>([])
-  const companySymbol = 'AAPL'
+  const { slug } = useParams()
+  const companySymbol = Array.isArray(slug) ? slug[0] : slug
 
   const apiUrl = `${process.env.NEXT_PUBLIC_FINPREP_BASE_URL}/financial-growth/${companySymbol}?period=quarter&limit=8&apikey=${process.env.NEXT_PUBLIC_FINPREP_API_KEY}`
 
@@ -25,19 +32,38 @@ const GrowthChart = () => {
   const options: Options = {
     chart: {
       type: 'line',
-      height: 350,
+      height: 370,
       backgroundColor: 'rgb(22,22,20)',
     },
-    title: {
-      text: '',
+    tooltip: {
+      formatter: function () {
+        return `${this.series.name}: ${this.y}%`
+      },
     },
+    title: { text: undefined },
     xAxis: {
-      visible: false,
+      categories: chartData.map((data: any) => data.formattedDate),
+      labels: {
+        style: {
+          color: 'whitesmoke',
+          opacity: 0.5,
+        },
+      },
     },
     yAxis: {
-      offset: 20,
+      labels: {
+        style: {
+          color: 'whitesmoke',
+          opacity: 0.5,
+        },
+      },
       title: {
-        text: null,
+        text: 'Growth',
+        style: {
+          fontSize: '18px',
+          color: 'whitesmoke',
+          opacity: 0.7,
+        },
       },
       gridLineColor: 'rgb(199, 195, 181)',
       gridLineWidth: 0.1,
@@ -59,22 +85,53 @@ const GrowthChart = () => {
         type: 'line',
         name: 'EPS Growth',
         data: chartData.map((data) => data['epsgrowth']),
-        color: 'rgb(113, 209, 135)',
-        lineWidth: 1.9,
+        color: ChartLineColors.livelyGreen,
+        lineWidth: ChartConstants.lineWidth,
       },
       {
         type: 'line',
         name: 'EBIT Growth',
         data: chartData.map((data) => data['ebitgrowth']),
-        color: 'rgb(113, 153, 209)',
-        lineWidth: 1.9,
+        color: ChartLineColors.lightGrey,
+        lineWidth: ChartConstants.lineWidth,
+        visible: false,
       },
       {
         type: 'line',
         name: 'Revenue Growth',
         data: chartData.map((data) => data['revenueGrowth']),
-        color: 'rgb(191, 191, 191)',
-        lineWidth: 1.9,
+        color: ChartLineColors.coolBlue,
+        lineWidth: ChartConstants.lineWidth,
+      },
+      {
+        type: 'line',
+        name: 'Inventory Growth',
+        data: chartData.map((data) => data['inventoryGrowth']),
+        color: ChartLineColors.warmGrey,
+        lineWidth: ChartConstants.lineWidth,
+        visible: false,
+      },
+      {
+        type: 'line',
+        name: 'Free Cash Flow Growth',
+        data: chartData.map((data) => data['freeCashFlowGrowth']),
+        color: ChartLineColors.coolLavender,
+        lineWidth: ChartConstants.lineWidth,
+      },
+      {
+        type: 'line',
+        name: 'Asset Growth',
+        data: chartData.map((data) => data['assetGrowth']),
+        color: ChartLineColors.darkerGrey,
+        lineWidth: ChartConstants.lineWidth,
+        visible: false,
+      },
+      {
+        type: 'line',
+        name: 'Debt Growth',
+        data: chartData.map((data) => data['debtGrowth']),
+        color: ChartLineColors.vividRed,
+        lineWidth: ChartConstants.lineWidth,
       },
     ],
     legend: {

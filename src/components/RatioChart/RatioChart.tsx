@@ -4,6 +4,8 @@ import HighchartsReact from 'highcharts-react-official'
 import { useEffect, useState } from 'react'
 import fmtData from './utils/fmtData'
 import { CompanyRatios } from '@customTypes/finprep'
+import { ChartLineColors } from '@enums/ChartLineColors'
+import { useParams } from 'next/navigation'
 
 type RatioChartProps = {
   indicator: keyof Omit<CompanyRatios, 'formattedDate'>
@@ -12,7 +14,8 @@ type RatioChartProps = {
 
 function RatioChart({ indicator, yAxisLabel }: RatioChartProps) {
   const [chartData, setChartData] = useState<CompanyRatios[]>([])
-  const companySymbol = 'AAPL'
+  const { slug } = useParams()
+  const companySymbol = Array.isArray(slug) ? slug[0] : slug
 
   const apiUrl = `${process.env.NEXT_PUBLIC_FINPREP_BASE_URL}/ratios/${companySymbol}?period=quarter&limit=140&apikey=${process.env.NEXT_PUBLIC_FINPREP_API_KEY}`
 
@@ -21,7 +24,6 @@ function RatioChart({ indicator, yAxisLabel }: RatioChartProps) {
       try {
         const res = await fetch(apiUrl)
         const data: CompanyRatios[] = await res.json()
-        console.log({ data })
         setChartData(fmtData(data))
       } catch (error) {
         console.error('Error fetching RatioChart data:', error)
@@ -43,11 +45,13 @@ function RatioChart({ indicator, yAxisLabel }: RatioChartProps) {
       visible: false,
     },
     yAxis: {
-      offset: 20,
+      offset: 25,
       title: {
         text: yAxisLabel,
         style: {
-          color: 'white',
+          fontSize: '16px',
+          color: 'whitesmoke',
+          opacity: 0.7,
         },
       },
       gridLineColor: 'rgb(199, 195, 181)',
@@ -57,7 +61,8 @@ function RatioChart({ indicator, yAxisLabel }: RatioChartProps) {
         align: 'left',
         x: 2,
         style: {
-          color: 'rgb(199, 195, 181)',
+          color: 'whitesmoke',
+          opacity: 0.5,
         },
       },
     },
@@ -74,10 +79,12 @@ function RatioChart({ indicator, yAxisLabel }: RatioChartProps) {
     series: [
       {
         type: 'line',
-        name: companySymbol,
+        name: Array.isArray(companySymbol)
+          ? companySymbol.join(', ')
+          : companySymbol,
         data: chartData.map((data) => data[indicator]),
-        color: 'rgb(209, 156, 113)',
-        lineWidth: 1.9,
+        color: ChartLineColors.brightOrange,
+        lineWidth: 1.4,
         marker: {
           enabled: false,
         },

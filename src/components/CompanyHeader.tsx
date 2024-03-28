@@ -8,7 +8,8 @@ import { useState, useEffect } from 'react'
 
 const CompanyHeader = () => {
   const [summaryData, setSummaryData] = useState<CompanyProfile | null>(null)
-  const { slug: companySymbol } = useParams()
+  const { slug } = useParams()
+  const companySymbol = Array.isArray(slug) ? slug[0] : slug
 
   const summaryUrl = `${process.env.NEXT_PUBLIC_FINPREP_BASE_URL}/profile/${companySymbol}?apikey=${process.env.NEXT_PUBLIC_FINPREP_API_KEY}`
 
